@@ -35,9 +35,15 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view .= "<p>";
-        $view .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view .= "</p>";
+        $view .= "<table>";
+        $view .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view .= "</table>";
     }
 }
 
@@ -127,11 +133,6 @@ chart_array[i] = [js_array1[i], js_array2[i]];
 anychart.onDocumentLoad(function() {
   // create a chart and set the data
   let chart = anychart.column(chart_array);
-//     [js_array1[1], js_array2[1]],
-//     [js_array1[2], js_array2[2]],
-//     [js_array1[3], js_array2[3]],
-//     [js_array1[4], js_array2[4]]
-//   ]);
   // set chart title
   chart.title("登録日付・登録冊数グラフ");
   // set chart container and draw
@@ -165,9 +166,16 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view1 .= "<p>";
-        $view1 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view1 .= "</p>";
+        $view1 .= "<table>";
+        $view1 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view1 .= "</table>";
+
     }
 }
 ?>
@@ -205,9 +213,16 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view2 .= "<p>";
-        $view2 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view2 .= "</p>";
+        $view2 .= "<table>";
+        $view2 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view2 .= "</table>";
+
     }
 }
 ?>
@@ -245,9 +260,16 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view3 .= "<p>";
-        $view3 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view3 .= "</p>";
+        $view3 .= "<table>";
+        $view3 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view3 .= "</table>";
+
     }
 }
 ?>
@@ -285,9 +307,16 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view4 .= "<p>";
-        $view4 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view4 .= "</p>";
+        $view4 .= "<table>";
+        $view4 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view4 .= "</table>";
+
     }
 }
 ?>
@@ -324,10 +353,16 @@ if($status==false){
     //Selectデータの数だけ自動でループしてくれる
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-        //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view5 .= "<p>";
-        $view5 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view5 .= "</p>";
+        $view5 .= "<table>";
+        $view5 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view5 .= "</table>";
+
     }
 }
 ?>
@@ -365,9 +400,16 @@ if($status==false){
     //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
     while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
         //$resultにデータが入ってくるのでそれを活用して[html]に表示させる為の変数を作成して代入する
-        $view6 .= "<p>";
-        $view6 .= $result["id"].":".$result["indate"].":".$result["bookname"].":".$result["bookurl"].":".$result["bookcomment"].":".$result["age"]."歳";
-        $view6 .= "</p>";
+        $view6 .= "<table>";
+        $view6 .= 
+            "<tr><td>id</td><td>".$result["id"]."</td></tr>".
+            "<tr><td>日付</td><td>".$result["indate"]."</td></tr>".
+            "<tr><td>書籍名</td><td>".$result["bookname"]."</td></tr>".
+            "<tr><td>書籍URL</td><td>".$result["bookurl"]."</td></tr>".
+            "<tr><td>書籍コメント</td><td>".$result["bookcomment"]."</td></tr>".
+            "<tr><td>年齢</td><td>".$result["age"]."歳"."</td></tr><br>";
+        $view6 .= "</table>";
+
     }
 }
 ?>
