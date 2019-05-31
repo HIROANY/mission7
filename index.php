@@ -12,17 +12,18 @@
 <header>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-    <div class="navbar-header"><a class="navbar-brand" href="select.php">データ一覧</a></div>
+    <div class="navbar-header"><a class="navbar-brand" href="select.php">データ一覧を確認する</a></div>
     </div>
   </nav>
 </header>
 <!-- Head[End] -->
 
 <!-- Main[Start] -->
-<form method="post" action="insert01.php">
+<form method="post" action="insert.php">
   <div class="jumbotron">
    <fieldset>
     <legend>書籍ブックマーク</legend>
+     <label>登録日時：<input type="date" name="sdate"></label><br>
      <label>書籍名　：<input type="text" name="bookname"></label><br>
      <label>書籍URL：<input type="text" name="bookurl"></label><br>
      <label>書籍コメント:<br>

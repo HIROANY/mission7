@@ -1,7 +1,12 @@
 <?php
 
-$ageCount[]= "";//課題7の年齢カウント
-$personCount[]="";//課題7の人数カウント
+$dateGraph = [];//日付グラフ
+$bookCount = [];//冊数カウント
+
+$php_json ="";//jsonエンコード
+
+$ageCount[] = "";//課題7の年齢カウント
+$personCount[] = "";//課題7の人数カウント
 
 ?>
 
@@ -57,7 +62,7 @@ if($status==false){
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-      <a class="navbar-brand" href="index01.php">データ登録に戻る</a>
+      <a class="navbar-brand" href="index.php">データ登録に戻る</a>
       </div>
     </div>
   </nav>
@@ -71,6 +76,68 @@ if($status==false){
     <div class="container jumbotron"><?=$view?></div>
 </div>
 <!-- Main[End] -->
+
+<?php
+
+//1.  DB接続します
+try{
+    $pdo = new PDO('mysql:dbname=gs_db_test;charset=utf8;host=localhost','root','');
+} catch (PDOException $e) {
+    exit('データベースに接続できませんでした！'.$e->getMessage());
+}
+
+//２．データ表示SQL作成
+$stmt = $pdo->prepare("SELECT * , count(*) from gs_test_table GROUP by sdate;");
+
+$status = $stmt->execute();
+
+//３．データ表示
+if($status==false){
+    //execute（SQL実行時にエラーがある場合）
+    $error = $stmt2->errorInfo();
+    exit("ErrorQuery".$error[2]);
+}else{
+    //Selectデータの数だけ自動でループしてくれる
+    //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
+    while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $dateGraph[] = $result["sdate"];
+        $bookCount[] = $result["count(*)"];
+    }
+        //PHPからJavascriptにデータを渡すためにjsonエンコード
+        $php_json1 = json_encode($dateGraph);
+        $php_json2 = json_encode($bookCount);
+}
+?>
+
+<script>
+let chart_array = [];
+
+//jsonにエンコードした配列をjsの配列に代入
+let js_array1 = <?php echo $php_json1; ?>;
+let js_array2 = <?php echo $php_json2; ?>;
+
+//上記2つの配列を1つにまとめる
+for(i=0;i<=js_array1.length-1;i++){
+
+chart_array[i] = [js_array1[i], js_array2[i]];
+
+}
+
+//日付ごとの登録冊数を棒グラフ化する
+anychart.onDocumentLoad(function() {
+  // create a chart and set the data
+  let chart = anychart.column(chart_array);
+//     [js_array1[1], js_array2[1]],
+//     [js_array1[2], js_array2[2]],
+//     [js_array1[3], js_array2[3]],
+//     [js_array1[4], js_array2[4]]
+//   ]);
+  // set chart title
+  chart.title("登録日付・登録冊数グラフ");
+  // set chart container and draw
+  chart.container("container").draw();
+});
+</script>
 
 <?php
 //課題1
@@ -357,22 +424,23 @@ if($status==false){
 
 <script>
 
-//集計した人数
-var pc1 = "<?php echo ($personCount[1]); ?>";
-var pc2 = "<?php echo ($personCount[2]); ?>";
-var pc3 = "<?php echo ($personCount[3]); ?>";
-var pc4 = "<?php echo ($personCount[4]); ?>";
+//集計した人数（jsonにエンコードした配列をjsの配列に代入）
+let pc1 = "<?php echo ($personCount[1]); ?>";
+let pc2 = "<?php echo ($personCount[2]); ?>";
+let pc3 = "<?php echo ($personCount[3]); ?>";
+let pc4 = "<?php echo ($personCount[4]); ?>";
 
-//年齢
-var ac1 = "<?php echo ($ageCount[1]); ?>";
-var ac2 = "<?php echo ($ageCount[2]); ?>";
-var ac3 = "<?php echo ($ageCount[3]); ?>";
-var ac4 = "<?php echo ($ageCount[4]); ?>";
+//年齢（jsonにエンコードした配列をjsの配列に代入）
+let ac1 = "<?php echo ($ageCount[1]); ?>";
+let ac2 = "<?php echo ($ageCount[2]); ?>";
+let ac3 = "<?php echo ($ageCount[3]); ?>";
+let ac4 = "<?php echo ($ageCount[4]); ?>";
 
+//年齢ごとに集計した人数を円グラフ化する
 anychart.onDocumentLoad(function() {
   // create a chart and set the data
   // as Array of Arrays
-  var chart = anychart.pie([
+  let chart = anychart.pie([
     [ac1, pc1],
     [ac2, pc2],
     [ac3,pc3],

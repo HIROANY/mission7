@@ -1,6 +1,7 @@
 <?php
 
 // index.phpから送られてきたデータを変数で受け取る
+$sdate = $_POST["sdate"];
 $bookname = $_POST["bookname"];
 $bookurl = $_POST["bookurl"];
 $bookcomment = $_POST["bookcomment"];
@@ -14,7 +15,8 @@ try{
     exit('データベースに接続できませんでした！'.$e->getMessage());
 }
 //３．データ登録SQL作成
-$stmt = $pdo->prepare("INSERT INTO gs_test_table(id,bookname,bookurl,bookcomment,indate,age)VALUE(NULL,:bookname,:bookurl,:bookcomment,sysdate(),:age)");
+$stmt = $pdo->prepare("INSERT INTO gs_test_table(id,sdate,bookname,bookurl,bookcomment,indate,age)VALUE(NULL,:sdate,:bookname,:bookurl,:bookcomment,sysdate(),:age)");
+$stmt->bindValue(':sdate', $sdate, PDO::PARAM_STR);
 $stmt->bindValue(':bookname', $bookname, PDO::PARAM_STR);
 $stmt->bindValue(':bookurl', $bookurl, PDO::PARAM_STR);
 $stmt->bindValue(':bookcomment', $bookcomment, PDO::PARAM_STR);
@@ -29,7 +31,7 @@ if($status==false){
     exit("QueryError".$error[2]);
 }else{
     //５．index.phpへリダイレクト　この処理がないと画面が切り替わらない
-    header("Location: select01.php");
+    header("Location: select.php");
 }
 
 ?>
