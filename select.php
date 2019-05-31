@@ -78,7 +78,7 @@ if($status==false){
 <!-- Main[Start] -->
 <div>
     <h2 align="center">データ一覧（全データ表示）</h2>
-    <div id="container"></div>
+    <div class="container jumbotron" id="container"></div>
     <div class="container jumbotron"><?=$view?></div>
 </div>
 <!-- Main[End] -->
@@ -459,7 +459,7 @@ if($status==false){
 <!-- Main[Start] -->
 <div>
     <h2 align="center">データ一覧（課題7: 年齢（10,20,30,40）の人数を集計）</h2>
-    <div id="container7"></div>
+    <div class="container jumbotron" id="container7"></div>
     <div class="container jumbotron"><?=$view7?></div>
 </div>
 <!-- Main[End] -->
